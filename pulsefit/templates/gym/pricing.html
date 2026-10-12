@@ -1,0 +1,27 @@
+{% extends 'gym/base.html' %}
+{% block title %}Pricing{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Membership Plans</h1>
+    <p>Simple monthly pricing. No hidden fees.</p>
+</section>
+
+<section class="section">
+    <div class="grid">
+        {% for p in plans %}
+        <div class="card plan {% if p.featured %}featured{% endif %}">
+            {% if p.featured %}<span class="ribbon">Most Popular</span>{% endif %}
+            <h3>{{ p.name }}</h3>
+            <p class="price">{{ p.price }} <small>RWF / month</small></p>
+            <ul>
+                {% for f in p.features %}
+                <li><i class="bi bi-check-circle-fill"></i> {{ f }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'contact' %}" class="btn">Choose {{ p.name }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'gym/base.html' %}
+{% block title %}Classes{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Our Classes</h1>
+    <p>Pick a class that fits your goals and schedule.</p>
+</section>
+
+<section class="section">
+    <div class="grid">
+        {% for c in classes %}
+        <div class="card">
+            <div class="icon"><i class="bi {{ c.icon }}"></i></div>
+            <h3>{{ c.name }}</h3>
+            <p>{{ c.desc }}</p>
+            <p class="meta"><i class="bi bi-clock"></i> {{ c.time }}</p>
+            <span class="badge">{{ c.level }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

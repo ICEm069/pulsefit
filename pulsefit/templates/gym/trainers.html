@@ -1,0 +1,22 @@
+{% extends 'gym/base.html' %}
+{% block title %}Trainers{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Meet Our Trainers</h1>
+    <p>Certified, friendly and ready to help you succeed.</p>
+</section>
+
+<section class="section">
+    <div class="grid grid-4">
+        {% for t in trainers %}
+        <div class="card trainer">
+            <div class="avatar">{{ t.initials }}</div>
+            <h3>{{ t.name }}</h3>
+            <p class="role">{{ t.role }}</p>
+            <p>{{ t.bio }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

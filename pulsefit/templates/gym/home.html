@@ -1,0 +1,41 @@
+{% extends 'gym/base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <p class="tag">Kigali's Fitness Community</p>
+        <h1>Stronger Every Day.</h1>
+        <p class="hero-sub">Expert coaches, modern equipment and classes for every level.</p>
+        <a href="{% url 'pricing' %}" class="btn">Start Today</a>
+        <a href="{% url 'classes' %}" class="btn btn-outline">See Classes</a>
+    </div>
+</section>
+
+<section class="stats">
+    <div><h2>1,200+</h2><p>Members</p></div>
+    <div><h2>25</h2><p>Weekly Classes</p></div>
+    <div><h2>12</h2><p>Expert Coaches</p></div>
+    <div><h2>7 days</h2><p>Open Every Week</p></div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">Popular Classes</h2>
+    <div class="grid">
+        {% for c in classes %}
+        <div class="card">
+            <div class="icon"><i class="bi {{ c.icon }}"></i></div>
+            <h3>{{ c.name }}</h3>
+            <p>{{ c.desc }}</p>
+            <span class="badge">{{ c.time }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Your first week is free.</h2>
+    <p>Try any class, meet the coaches and see if PulseFit is right for you.</p>
+    <a href="{% url 'contact' %}" class="btn">Claim Free Week</a>
+</section>
+{% endblock %}s

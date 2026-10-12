@@ -1,0 +1,45 @@
+{% extends 'gym/base.html' %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Join or Contact Us</h1>
+    <p>Send us a message and we'll reply within 24 hours.</p>
+</section>
+
+<section class="section contact-wrap">
+    <div class="contact-info card">
+        <h3>Visit Us</h3>
+        <p><i class="bi bi-geo-alt-fill"></i> Kigali Heights, KG 7 Ave, Kigali</p>
+        <p><i class="bi bi-telephone-fill"></i> +250 788 000 000</p>
+        <p><i class="bi bi-envelope-fill"></i> hello@pulsefit.rw</p>
+    </div>
+
+    <div class="contact-form card">
+        {% if sent %}
+            <div class="success">Thank you{% if name %}, {{ name }}{% endif %}! We received your message.</div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="plan">Interested In</label>
+            <select id="plan" name="plan">
+                <option>Basic Plan</option>
+                <option>Pro Plan</option>
+                <option>Elite Plan</option>
+                <option>Free Trial Week</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
